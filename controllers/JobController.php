@@ -27,7 +27,7 @@ class JobController extends Controller
     public function actionPrice()
     {
         $this->view->title = 'Price';
-        return $this->render('price', ['cart' => JobRepository::getPrices()]);
+        return $this->render('price', ['price' => JobRepository::getPrices()]);
     }
 
     public function actionCreatePrice()

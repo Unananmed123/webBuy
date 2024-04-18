@@ -13,7 +13,8 @@ class PriceForm extends Model
     public function rules()
     {
         return [
-            [['title', 'description', 'price'], 'required']
+            [['title', 'description', 'price'], 'required'],
+            ['price', 'number']
         ];
     }
 

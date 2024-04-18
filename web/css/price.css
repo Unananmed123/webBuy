@@ -98,3 +98,12 @@
 .lastPrice{
     color: #B5B8B1;
 }
+.createCart{
+    position: absolute;
+    display: flex;
+    top: 300px;
+}
+.spanPrices{
+    display: flex;
+    flex-direction: column;
+}
