@@ -23,7 +23,6 @@ class m240409_114902_initDB extends Migration
             'basket',
             [
                 'id' => $this->primaryKey(),
-                'user_id' => $this->integer()->notNull(),
                 'price_id' => $this->integer()->notNull(),
             ]
         );
@@ -32,35 +31,26 @@ class m240409_114902_initDB extends Migration
             'title' => $this->string()->notNull(),
             'description' => $this->string()->notNull(),
             'price' => $this->integer()->notNull(),
+            'last' => $this->integer()->notNull(),
             'photo' => $this->string(),
         ]);
 
-        $this->addForeignKey(
-            'basket_to_users_fk',
-            'basket',
-            'user_id',
-            'users',
-            'id',
-            'CASCADE',
-            'CASCADE',
-        );
-
-        $this->addForeignKey(
-            'basket_to_websites_fk',
+        $this->addForeignKey('basket_to_price_fk',
             'basket',
             'price_id',
             'price',
             'id',
             'CASCADE',
             'CASCADE',
-        );
-    }
+
+        );}
 
     public function safeDown()
     {
-        $this->dropTable('price');
         $this->dropTable('basket');
+        $this->dropTable('price');
         $this->dropTable('users');
     }
+
 
 }

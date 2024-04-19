@@ -1,5 +1,7 @@
 <?php
 
+/** @var $price */
+
 ?>
     <div class="containerIndex">
         <div class="formInd">

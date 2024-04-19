@@ -3,8 +3,13 @@
 namespace app\controllers;
 
 
+use app\entity\Basket;
+use app\entity\Price;
+use app\models\BasketForm;
+use app\models\DelPriceForm;
 use app\models\PriceForm;
 use app\repository\JobRepository;
+use app\repository\UsersRepository;
 use Yii;
 use yii\web\Controller;
 
@@ -21,7 +26,7 @@ class JobController extends Controller
     public function actionIndex()
     {
         $this->view->title = 'Главная страница';
-        return $this->render('index');
+        return $this->render('index', ['price' => JobRepository::getPrices()]);
     }
 
     public function actionPrice()
@@ -37,14 +42,30 @@ class JobController extends Controller
             JobRepository::createPrice(
                 $model->title,
                 $model->description,
-                $model->price,
+                $model->prices,
+                $model->last,
             );
-            return $this->goHome();
+            return $this->redirect('/job/price');
         }
         return $this->render("createPrice", [
             'model' => $model
         ]);
     }
 
+    public function actionDeletePrice($id)
+    {
+        $model = JobRepository::getPriceById($id);
+        if (!empty($model)){
+            $model->delete();
+            $this->redirect('/job/price');
+        }
+        return $this->render('deletePrice', ['model' => $model]);
+    }
+
+    public function actionBasket($prise_id)
+    {
+        $cart = JobRepository::getPriceById($prise_id);
+        return $this->render('basket', ['model' => JobRepository::getBasket(), 'cart' => $cart]);
+    }
 
 }

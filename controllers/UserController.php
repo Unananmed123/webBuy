@@ -58,4 +58,15 @@ class UserController extends Controller
         $model = new UserForm();
         return $this->render('profile', ['model' => $model]);
     }
+
+    public function actionDeleteUser($id)
+    {
+        $model = UsersRepository::getUserById($id);
+        if (!empty($model)){
+            $model->delete();
+            Yii::$app->user->logout();
+            $this->redirect('/user/registration');
+        }
+        return $this->render('deleteUser', ['model' => $model]);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 /** @var $model */
 
+
 use yii\helpers\Html;
 
 ?>
@@ -10,11 +11,17 @@ use yii\helpers\Html;
             <div class="loginUser">
                 <span class="loginText" style="font-size: 30px;">Your nickname:</span><br>
                 <div class="textName">
-                    <?= Html::submitButton(' ' . Yii::$app->user->identity->login . '', ['class' => 'textName'])  ?>
+                    <?= Html::submitButton(' ' . Yii::$app->user->identity->login . ' ', ['class' => 'textName'])  ?>
                 </div>
             </div>
             <div class="logout">
                 <?= Html::beginForm('/user/logout') . Html::submitButton('Выход из аккаунта', ['class' => 'animated-button']) . Html::endForm() ?>
+            </div>
+            <div class="deleteUser">
+                    <a href="/user/delete-user?id=<?= Yii::$app->user->identity->getId(); ?>" class="pressed-button">Удалить аккаунт</a>
+            </div>
+            <div class="basketProfile">
+                <a href="/job/basket">Корзина</a>
             </div>
         </div>
 </div>

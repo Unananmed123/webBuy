@@ -1,0 +1,4 @@
+.textBasket{
+    display: flex;
+    flex-direction: column;
+}

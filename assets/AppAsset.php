@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         'css/profile.css',
         'css/reg.css',
         'css/price.css',
+        'css/basket.css',
     ];
     public $js = [
     ];

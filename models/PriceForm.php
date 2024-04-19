@@ -8,13 +8,14 @@ class PriceForm extends Model
 {
     public $title;
     public $description;
-    public $price;
+    public $prices;
+    public $last;
 
     public function rules()
     {
         return [
-            [['title', 'description', 'price'], 'required'],
-            ['price', 'number']
+            [['title', 'description', 'prices', 'last'], 'required'],
+            [['prices', 'last'], 'number']
         ];
     }
 
@@ -23,7 +24,8 @@ class PriceForm extends Model
         return [
             'title' => 'Название',
             'description' => 'Описание',
-            'Price' => 'Цена',
+            'price' => 'Цена',
+            'lastprice' => 'Старая цена',
         ];
     }
 }
