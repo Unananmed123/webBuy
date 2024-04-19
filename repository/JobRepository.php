@@ -23,6 +23,11 @@ class JobRepository
         return $price->id;
     }
 
+    public static function getPriceById($id)
+    {
+        return Price::find()->where(['id' => $id])->one();
+    }
+
     public static function createBasket($prise_id)
     {
         $basket = new Basket();
@@ -30,12 +35,9 @@ class JobRepository
         $basket->save();
         return $basket->id;
     }
-    public static function getPriceById($id)
+
+    public static function getBasket($prise_id)
     {
-        return Price::find()->where(['id' => $id])->one();
-    }
-    public static function getBasket()
-    {
-        return Basket::find()->all();
+        return Basket::find()->where(['prise_id' => $prise_id])->all();
     }
 }
