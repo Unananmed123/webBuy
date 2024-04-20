@@ -21,7 +21,7 @@ use yii\helpers\Html;
                     <a href="/user/delete-user?id=<?= Yii::$app->user->identity->getId(); ?>" class="pressed-button">Удалить аккаунт</a>
             </div>
             <div class="basketProfile">
-                <a href="/job/basket">Корзина</a>
+                <a href="/job/basket?id=<?= Yii::$app->user->id ?> ">Корзина</a>
             </div>
         </div>
 </div>

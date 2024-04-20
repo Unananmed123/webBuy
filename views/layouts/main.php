@@ -22,37 +22,40 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<header>
-    <div class="container">
-        <a href="/" class="logo floating-button">Orent</a>
-    <nav>
-        <ul>
-            <li class="liLayout  floating-button"><a href="/job/aboutus">About Us</a></li>
-            <li class="liLayout  floating-button"><a href="/job/price">Price</a></li>
-            <li class="liLayout  floating-button"><a href="/job/photo">Photo</a></li>
-            <?php if (Yii::$app->user->isGuest):?>
+<div class="bgAll">
+    <header>
+        <div class="container">
+            <a href="/" class="logo floating-button">Orent</a>
+            <nav>
+                <ul>
+                    <li class="liLayout  floating-button"><a href="/job/aboutus">About Us</a></li>
+                    <li class="liLayout  floating-button"><a href="/job/price">Price</a></li>
+                    <li class="liLayout  floating-button"><a href="/job/photo">Photo</a></li>
+                    <?php if (Yii::$app->user->isGuest):?>
                     <li class="btn floating-button"><a href="/user/login">Sign in</a></li>
-    </div>
-            <?php else:?>
-                <li class="liLayout Profile floating-button"><a href="/user/profile">Profile</a></li>
-            <?php endif;?>
+        </div>
+        <?php else:?>
+            <li class="liLayout Profile floating-button"><a href="/user/profile">Profile</a></li>
+        <?php endif;?>
         </ul>
-    </nav>
-    </div>
-</header>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <?= $content ?>
+        </div>
+    </main>
 
-<main>
-    <div>
-        <?= $content ?>
-    </div>
-</main>
-
+</div>
 <footer>
     <div class="container">
         ©Orent <?= date('Y') ?>
     </div>
 </footer>
+
+
+
+
 
 <?php $this->endBody() ?>
 </body>

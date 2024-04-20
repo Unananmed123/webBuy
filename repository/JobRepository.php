@@ -7,7 +7,7 @@ use app\entity\Price;
 
 class JobRepository
 {
-    public static function getPrices()
+    public static function getPrices() :array
     {
         return Price::find()->all();
     }
@@ -28,16 +28,23 @@ class JobRepository
         return Price::find()->where(['id' => $id])->one();
     }
 
-    public static function createBasket($prise_id)
+    public static function createBasket($price_id, $user_id)
     {
         $basket = new Basket();
-        $basket->prise_id = $prise_id;
+        $basket->price_id = $price_id;
+        $basket->user_id = $user_id;
         $basket->save();
         return $basket->id;
     }
 
-    public static function getBasket($prise_id)
+    public static function getPriceByBasketId($price_id)
     {
-        return Basket::find()->where(['prise_id' => $prise_id])->all();
+        return Price::find()->where(['id' => $price_id])->one();
     }
+
+    public static function getPriceByUserId($id)
+    {
+        return Price::find()->where(['id' => $id])->one();
+    }
+
 }

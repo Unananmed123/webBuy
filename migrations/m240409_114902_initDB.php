@@ -24,6 +24,7 @@ class m240409_114902_initDB extends Migration
             [
                 'id' => $this->primaryKey(),
                 'price_id' => $this->integer()->notNull(),
+                'user_id' => $this->integer()->notNull(),
             ]
         );
         $this->createTable('price',[
@@ -35,7 +36,7 @@ class m240409_114902_initDB extends Migration
             'photo' => $this->string(),
         ]);
 
-        $this->addForeignKey('basket_to_price_fk',
+        $this->addForeignKey('prise_to_basket_fk',
             'basket',
             'price_id',
             'price',
@@ -43,12 +44,24 @@ class m240409_114902_initDB extends Migration
             'CASCADE',
             'CASCADE',
 
-        );}
+        );
+        $this->addForeignKey('users_to_basket_fk',
+            'basket',
+            'user_id',
+            'users',
+            'id',
+            'CASCADE',
+            'CASCADE',
+
+        );
+}
 
     public function safeDown()
     {
-        $this->dropTable('basket');
+
         $this->dropTable('price');
+        $this->dropTable('basket');
+
         $this->dropTable('users');
     }
 

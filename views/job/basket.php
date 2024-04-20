@@ -1,21 +1,31 @@
 <?php
 
-/** @var $model */
-/** @var $cart */
+/** @var $price */
+/** @var $user */
+/** @var $basket */
+
+use app\entity\Price;
+$cart = Price::find()->where(['id'  => $price->price_id])->all();
 ?>
 <div class="containerIndex">
         <div class="textBasket">
-            <div class="basketTitle">
-                <?=  'Название: '. $cart->title ?>
+            <div class="buy">
+                    <div class="glases">
+                    <?php foreach ($cart as $item): ?>
+                        <div class="titlePrice">
+                            <?= $item->title ?>
+                        </div>
+                        <div class="descPrice">
+                            <?= $item->description ?>
+                        </div>
+                        <div class="pricePrice">
+                            <?= $item->price ?>
+                        </div>
+                        <div class="ltPrPrice">
+                            <?= $item->last ?>
+                        </div>
+                    <?php endforeach; ?>
             </div>
-            <div class="basketDesc">
-                <?= 'Описание: '.$cart->description ?>
-            </div>
-            <div class="basketPrice">
-                <?= 'Цена: '.$cart->price ?>
-            </div>
-            <div class="basketPriceLast">
-                <?= 'Старая цена: '.$cart->last ?>
             </div>
         </div>
 

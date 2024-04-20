@@ -62,10 +62,23 @@ class JobController extends Controller
         return $this->render('deletePrice', ['model' => $model]);
     }
 
-    public function actionBasket($prise_id)
+    public function actionBasket()
     {
-        $cart = JobRepository::getPriceById($prise_id);
-        return $this->render('basket', ['model' => JobRepository::getBasket(), 'cart' => $cart]);
+        $user_id = Yii::$app->user->id;
+        $price = Basket::find()->where(['user_id' => $user_id])->one();
+        return $this->render('basket', ['user' => Yii::$app->user->id, 'price' => $price]);
     }
 
+    public function actionCreateBasket($id)
+    {
+        $model = new BasketForm();
+        if (!empty($model)) {
+            JobRepository::createBasket(
+                $model->price_id = $id,
+                $model->user_id = Yii::$app->user->id
+            );
+            return $this->redirect('/job/basket');
+        }
+        return $this->render('createBasket', ['model' => $model]);
+    }
 }

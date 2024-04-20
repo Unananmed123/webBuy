@@ -17,7 +17,7 @@ class RegistrationModel extends Model
         return [
             [['login', 'password', 'passwordRepeat'], 'required'],
             ['passwordRepeat', 'compare', 'compareAttribute' => 'password'],
-            ['login', 'validateLogin']
+            ['login', 'validateLogin'],
         ];
     }
 
@@ -35,6 +35,7 @@ class RegistrationModel extends Model
     {
         return [
             'login' => 'Логин',
+            'mail' => 'Почта',
             'password' => 'Пароль',
             'Imade' => 'Фото',
             'passwordRepeat' => 'Повторённый пароль',

@@ -25,7 +25,7 @@ class UserForm extends Model
     {
         return [
           [['login', 'password'], 'required'],
-            ['password', 'validatePassword']
+            ['password', 'validatePassword'],
         ];
     }
 

@@ -3,7 +3,6 @@
 
 use yii\widgets\ActiveForm;
 
-
 ?>
 <div class="containerIndex">
     <div class="formInd">
@@ -29,7 +28,7 @@ use yii\widgets\ActiveForm;
                                     <?= '₽' . ' ' . $item->last ?>
                                 </span>
                                 <span class="basket">
-                                    <a href="/job/basket?id=<?= $item->id ?>" class="pressed-button prsdBtnBasket">В корзину</a>
+                                    <a href="/job/create-basket?id=<?= $item->id ?>" class="pressed-button prsdBtnBasket">В корзину</a>
                                 </span>
                                 <?php if (!Yii::$app->user->isGuest): ?>
                                     <a href="/job/delete-price?id=<?= $item->id ?>" class="createCart pressed-button">Удалить карточку <?= $item->title ?></a>
