@@ -2,17 +2,16 @@
 
 /** @var $price */
 /** @var $user */
-
-
+/** @var $cart */
 use app\entity\Price;
 
 
 ?>
 <div class="containerIndex">
-    <div class="formInd">
+    <div class="">
         <div class="textBasket">
             <div class="buy">
-                <?php if ($price): ?>
+                <?php if ($cart): ?>
                     <div class="glases">
                         <?php foreach ($cart as $item): ?>
                             <div class="titlePrice">

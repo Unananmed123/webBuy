@@ -67,7 +67,6 @@ class JobController extends Controller
         $user_id = Yii::$app->user->id;
         $price = JobRepository::getBasketUsId($user_id);
         $cart = JobRepository::getPriceByPriceId($price);
-        var_dump($cart);
         return $this->render('basket', ['user' => $user_id, 'price' => $price, 'cart' => $cart]);
     }
 
