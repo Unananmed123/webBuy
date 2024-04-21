@@ -1,76 +1,50 @@
-.createCart{
-    position: absolute;
-    display: flex;
-    top: 500px;
+.priceGlases{
+    width: 300px;
+    height: 450px;
+    position: relative;
+    top: -150px;
+}
+.priceGlases:hover{
+    width: 300px;
+    height: 450px;
 }
 .delCart{
-    position: absolute;
-    display: flex;
-    top: 400px;
+    position: relative;
+    top: 310px;
 }
-.glCreate{
-    height: 500px;
-}
-.glCreate:hover{
-    height: 550px;
-}
-.priceGlass{
-    width: 350px;
-    height: 380px;
-}
-.priceGlass:hover{
-    width: 370px;
-    height: 400px;
+.BtnBasket{
+    position: relative;
+    top: 200px;
 
 }
 .textPrice{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    font-family: "Roboto Condensed", sans-serif;
+    flex-direction: column;
 }
 .titlePrice{
+    padding-top: 10px;
     font-size: 36px;
-    transition: font-size 0.5s ease;
-    position: relative;
-    top: 20px;
-}
-.priceGlass:hover .titlePrice{
-    font-size: 45px;
 }
 .descPrice{
-    font-size: 25px;
-    position: relative;
-    top: 40px;
-    transition: font-size 0.5s ease;
-}
-.priceGlass:hover .descPrice{
+    padding-top: 60px;
     font-size: 30px;
 }
 .pricePrice{
+    padding-top: 150px;
+    color: red;
+    font-size: 26px;
+}
+.lasPricePrice{
+    padding-top: 10px;
+}
+.BtnBasket{
     position: relative;
-    font-size: 20px;
-    top: 150px;
-    transition: font-size 0.5s ease;
+    top: -1px;
 }
-.ltPrPrice{
-    position: relative;
-    font-size: 15px;
-    top: 160px;
-}
-.priceGlass:hover .pricePrice{
-    font-size: 25px;
-}
-.empty{
+.adminBtn{
     display: flex;
-    justify-content: center;
-    font-size: 72px;
-    font-family: "Roboto Slab", serif;
-    position: relative;
-    top: 100px;
-    color: #2c2c2c;
-}
-.basket{
-    position: relative;
-    top: 170px;
+    flex-direction: column;
+    width: 400px;
 }
