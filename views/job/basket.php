@@ -5,7 +5,6 @@
 /** @var $cart */
 use app\entity\Price;
 
-
 ?>
 <div class="containerIndex">
     <div class="">
@@ -30,6 +29,7 @@ use app\entity\Price;
                                 <a href="/job/delete-basket?id=<?= $price->id ?>">Удалить</a>
                             </div>
                         <?php endforeach; ?>
+
                 </div>
                 <?php else:?>
                     <span>

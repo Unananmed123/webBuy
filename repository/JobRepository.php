@@ -51,4 +51,5 @@ class JobRepository
     {
         return Price::find()->where(['id'  => $price->price_id])->all();
     }
+    
 }
