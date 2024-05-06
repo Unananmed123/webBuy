@@ -23,6 +23,7 @@ class JobController extends Controller
             ],
         ];
     }
+
     public function actionIndex()
     {
         $this->view->title = 'Главная страница';
@@ -55,7 +56,7 @@ class JobController extends Controller
     public function actionDeletePrice($id)
     {
         $model = JobRepository::getPriceById($id);
-        if (!empty($model)){
+        if (!empty($model)) {
             $model->delete();
             $this->redirect('/job/price');
         }
@@ -66,28 +67,30 @@ class JobController extends Controller
     {
         $user_id = Yii::$app->user->id;
         $price = JobRepository::getBasketUsId($user_id);
-        $cart = JobRepository::getPriceByPriceId($price);
+//        var_dump($price);
+        $cart = [];
+        foreach ($price as $item){
+            $cart[] = JobRepository::getPriceByPriceId($item->price_id);
+        }
+
+
 
         return $this->render('basket', ['cart' => $cart, 'price' => $price]);
     }
 
     public function actionCreateBasket($id)
     {
-        $model = new BasketForm();
-        if (!empty($model)) {
-            JobRepository::createBasket(
-                $model->price_id = $id,
-                $model->user_id = Yii::$app->user->id
-            );
-            return $this->redirect('/job/basket');
-        }
-        return $this->render('createBasket', ['model' => $model]);
+        JobRepository::createBasket(
+            $id,
+            Yii::$app->user->id
+        );
+        return $this->redirect('/job/basket');
     }
 
     public function actionDeleteBasket($id)
     {
         $model = JobRepository::getBasketById($id);
-        if (!empty($model)){
+        if (!empty($model)) {
             $model->delete();
             $this->redirect('/job/basket');
         }
