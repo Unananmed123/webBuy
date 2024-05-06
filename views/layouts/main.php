@@ -28,7 +28,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             <a href="/" class="logo floating-button">Orent</a>
             <nav>
                 <ul>
-                    <li class="liLayout  floating-button"><a href="/job/aboutus">About Us</a></li>
+                    <li class="liLayout  floating-button"><a href="/job/about">About Us</a></li>
                     <li class="liLayout  floating-button"><a href="/job/price">Price</a></li>
                     <li class="liLayout  floating-button"><a href="/job/photo">Photo</a></li>
                     <?php if (Yii::$app->user->isGuest):?>

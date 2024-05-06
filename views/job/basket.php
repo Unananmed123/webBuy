@@ -1,10 +1,11 @@
 <?php
 
-/** @var $price */
-/** @var $user */
 /** @var $cart */
-use app\entity\Price;
+/** @var $price */
 
+
+use app\entity\Price;
+var_dump($cart);
 ?>
 <div class="containerIndex">
     <div class="">
@@ -23,7 +24,7 @@ use app\entity\Price;
                                 <?= $item->price ?>
                             </div>
                             <div class="ltPrPrice">
-                                <?= $item->last ?>
+                                <?= $item->last; ?>
                             </div>
                             <div class="delBas">
                                 <a href="/job/delete-basket?id=<?= $price->id ?>">Удалить</a>

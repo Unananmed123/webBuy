@@ -18,7 +18,7 @@
                         <li>- Низкие цены</li>
                         <li>- Большое количество скидок</li>
                         <li></li>
-                        <a href="/job/aboutus" class="morePrice gradient-button">Подробнее</a>
+                        <a href="/job/about" class="morePrice gradient-button">Подробнее</a>
                     </ul>
                 </div>
 
