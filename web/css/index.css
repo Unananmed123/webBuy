@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&display=swap');
+.containerIndex{
+    display: flex;
+    justify-content: center;
+    width: 1200px;
+    height: 720px;
+    margin: 0 auto;
+
+}
+
+.indexText{
+    color: white;
+    display: flex;
+    justify-content: center;
+   padding-top: 350px;
+    font-size: 120px;
+    user-select: none;
+}
+
+.spanIndex{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: "Roboto Slab", serif;
+    user-select: none;
+}

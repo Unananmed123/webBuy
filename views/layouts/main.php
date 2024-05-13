@@ -1,6 +1,7 @@
 <?php
 
 /** @var yii\web\View $this */
+
 /** @var string $content */
 
 use app\assets\AppAsset;
@@ -17,46 +18,62 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
-    <title><?=$this->title?></title>
+    <title><?= $this->title ?></title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 <div class="bgAll">
-    <header>
+
+
+    <header class="header">
+
         <div class="container">
-            <a href="/" class="logo floating-button">Orent</a>
+
+
+
             <nav>
+
+            <div class="navig">
+                <a href="/" class="orent ltText">Orent</a>
+                <ul class="ulMain">
+                    <li class="href ltText"><a href="/job/about">About Us</a></li>
+                    <li class="href ltText"><a href="/job/price">Price</a></li>
+                    <li class="href ltText"><a href="/job/photo">Photo</a></li>
+                    <li class="href ltText"><a href="/job/news">News</a></li>
+                    <?php if (Yii::$app->user->isGuest): ?>
+                    <li class="href ltText" ><a href="/user/login">Sign in</a></li>
+                </ul>
+
+            </div>
                 <ul>
-                    <li class="liLayout  floating-button"><a href="/job/about">About Us</a></li>
-                    <li class="liLayout  floating-button"><a href="/job/price">Price</a></li>
-                    <li class="liLayout  floating-button"><a href="/job/photo">Photo</a></li>
-                    <?php if (Yii::$app->user->isGuest):?>
-                    <li class="btn floating-button"><a href="/user/login">Sign in</a></li>
-        </div>
-        <?php else:?>
-            <li class="liLayout Profile floating-button"><a href="/user/profile">Profile</a></li>
-        <?php endif;?>
-        </ul>
-        </nav>
+                    <?php else: ?>
+                        <li class="href ltText"><a href="/user/profile">Profile</a></li>
+                </ul>
+                    <?php endif; ?>
+
+            </nav>
+            </div>
+
     </header>
+
+
     <main>
         <div>
             <?= $content ?>
         </div>
     </main>
 
-</div>
+
+
+
 <footer>
-    <div class="container">
+    <div class="container fotCont">
         ©Orent <?= date('Y') ?>
     </div>
 </footer>
 
-
-
-
-
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>

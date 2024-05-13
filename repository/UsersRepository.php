@@ -13,7 +13,6 @@ class UsersRepository
     {
         return Users::find()->where(['id' => $id])->one();
     }
-
     public static function getUserByLogin($login)
     {
         return Users::find()->where(['login' => $login])->one();

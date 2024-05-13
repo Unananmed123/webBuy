@@ -22,8 +22,12 @@ use yii\widgets\ActiveForm;
 
                 <?= $form->field($model, 'login')->textInput() ?>
                 <?= $form->field($model, 'password')->passwordInput() ?>
-                <span class="regText">Нет аккаунта ? - <a href="/user/registration" class="textUrlReg">Зарегестрируйтесь</a></span><br>
-                <?= Html::submitButton("Войти", ['class' => 'pressed-button']) ?>
+                <div class="textLogin">
+                    <span class="regTextLog">Нет аккаунта ? - <a href="/user/registration" class="textUrlReg">Зарегестрируйтесь</a></span><br>
+                    <?= Html::submitButton("Войти", ['class' => 'sliding-button backAcc loginBtn']) ?>
+                </div>
+
+
 
                 <?php ActiveForm::end() ?>
             </div>

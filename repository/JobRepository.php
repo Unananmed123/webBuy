@@ -3,6 +3,7 @@
 namespace app\repository;
 
 use app\entity\Basket;
+use app\entity\News;
 use app\entity\Price;
 
 class JobRepository
@@ -51,5 +52,24 @@ class JobRepository
         $basket->user_id = $user_id;
         $basket->save();
          return $basket->id;
+    }
+
+    public static function createMessage($user_id,$message)
+    {
+        $news = new News();
+        $news->user_id = $user_id;
+        $news->message = $message;
+        $news->save();
+        return $message->id;
+    }
+
+    public static function getNews()
+    {
+        return News::find()->all();
+    }
+
+    public static function getNewsById($id)
+    {
+        return News::find()->where(['id' => $id])->one();
     }
 }

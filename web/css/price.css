@@ -1,50 +1,54 @@
-.priceGlases{
+.bgCart{
+    background: -webkit-linear-gradient(90deg, #454545,#212121);
+    background: linear-gradient(90deg, #454545,#212121);
     width: 300px;
-    height: 450px;
-    position: relative;
-    top: -150px;
+    height: 470px;
+    border-radius: 30px;
+    margin: 15px;
+    transition: width 0.4s ease;
 }
-.priceGlases:hover{
-    width: 300px;
-    height: 450px;
+.bgCart:hover{
+    width: 310px;
 }
-.delCart{
-    position: relative;
-    top: 310px;
-}
-.BtnBasket{
-    position: relative;
-    top: 200px;
 
+.formInd{
+    display: flex;
+    margin-top: 100px;
 }
 .textPrice{
+    color: #fff;
+}
+
+.titlePrice, .descPrice, .pricePrice, .lastPricePrice{
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.titlePrice{
-    padding-top: 10px;
-    font-size: 36px;
-}
-.descPrice{
-    padding-top: 60px;
+    padding: 33px;
     font-size: 30px;
 }
-.pricePrice{
-    padding-top: 150px;
-    color: red;
-    font-size: 26px;
-}
-.lasPricePrice{
-    padding-top: 10px;
-}
-.BtnBasket{
-    position: relative;
-    top: -1px;
-}
-.adminBtn{
+.forbasket{
     display: flex;
-    flex-direction: column;
-    width: 400px;
+    justify-content: center;
 }
+.pricePrice{
+    color: #ff0000;
+    position: relative;
+    top: 60px;
+}
+.lastPricePrice{
+    color: #454545;
+    text-decoration: line-through;
+}
+
+
+.createPrice{
+    background: none;
+}
+.btnPrice{
+    display: flex;
+    justify-content: center;
+}
+.loginToBuy{
+    display: flex;
+    justify-content: center;
+}
+

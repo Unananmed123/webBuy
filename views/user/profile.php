@@ -14,7 +14,7 @@ use yii\helpers\Html;
                 </div>
             </div>
             <div class="logout">
-                <?= Html::beginForm('/user/logout') . Html::submitButton('Выход из аккаунта', ['class' => 'animated-button']) . Html::endForm() ?>
+                <?= Html::beginForm('/user/logout') . Html::submitButton('Выход из аккаунта', ['class' => 'sliding-button backAcc']) . Html::endForm() ?>
             </div>
             <div class="deleteUser">
                     <a href="/user/delete-user?id=<?= Yii::$app->user->identity->getId(); ?>" class="pressed-button">Удалить аккаунт</a>

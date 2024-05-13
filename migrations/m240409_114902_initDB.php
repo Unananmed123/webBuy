@@ -20,6 +20,16 @@ class m240409_114902_initDB extends Migration
         );
 
         $this->createTable(
+            'news',
+            [
+                'id' => $this->primaryKey(),
+                'user_id' => $this->integer()->notNull(),
+                'message' => $this->string()->notNull(),
+                'date' => $this->timestamp()->defaultExpression("NOW()"),
+            ]
+        );
+
+        $this->createTable(
             'basket',
             [
                 'id' => $this->primaryKey(),
@@ -54,15 +64,23 @@ class m240409_114902_initDB extends Migration
             'CASCADE',
 
         );
+//        $this->addForeignKey('news_to_users_fk',
+//            'news',
+//            'user_id',
+//            'users',
+//            'id',
+//            'CASCADE',
+//            'CASCADE',
+//        );
 }
 
     public function safeDown()
     {
-
+        $this->dropTable('news');
         $this->dropTable('price');
         $this->dropTable('basket');
-
         $this->dropTable('users');
+
     }
 
 

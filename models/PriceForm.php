@@ -24,8 +24,8 @@ class PriceForm extends Model
         return [
             'title' => 'Название',
             'description' => 'Описание',
-            'price' => 'Цена',
-            'lastprice' => 'Старая цена',
+            'prices' => 'Цена',
+            'last' => 'Старая цена',
         ];
     }
 }

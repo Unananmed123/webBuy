@@ -7,6 +7,7 @@ use app\entity\Basket;
 use app\entity\Price;
 use app\models\BasketForm;
 use app\models\DelPriceForm;
+use app\models\NewsForm;
 use app\models\PriceForm;
 use app\repository\JobRepository;
 use app\repository\UsersRepository;
@@ -101,5 +102,40 @@ class JobController extends Controller
     {
         $this->view->title = 'О нас';
         return $this->render('about');
+    }
+
+    public function actionMessage($user_id)
+    {
+        $model = new NewsForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            JobRepository::createMessage(
+                $model->user_id = $user_id,
+                $model->message
+            );
+            return $this->redirect('/job/news');
+        }
+
+        return $this->render('message', ['model' => $model]);
+    }
+
+    public function actionNews()
+    {
+        $news = JobRepository::getNews();
+        foreach ($news as $item){
+            $user = UsersRepository::getUserById($item->user_id);
+        }
+
+
+        return $this->render('news', ['news' => $news, 'user' => $user]);
+    }
+
+    public function actionDeleteMessage($id)
+    {
+        $model = JobRepository::getNewsById($id);
+        if (!empty($model)) {
+            $model->delete();
+            $this->redirect('/job/news');
+        }
+        return $this->render('deleteMessage', ['model' => $model]);
     }
 }

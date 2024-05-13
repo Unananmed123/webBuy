@@ -4,27 +4,13 @@
 use yii\widgets\ActiveForm;
 
 ?>
-<div class="containerInd">
-    <?php if (Yii::$app->user->isGuest): ?>
-    <?php else: ?>
-    <div class="adminBtn">
-        <a href="/job/create-price" class="crCartBtn pressed-button">Создать карточку</a>
-
-        <?php foreach ($price as $item): ?>
-
-            <a href="/job/delete-price?id=<?= $item->id ?>" class=" pressed-button crCartBtn">Удалить карточку <?= $item->title ?></a>
-
-        <?php endforeach; ?>
-
-        <?php endif; ?>
-    </div>
-
+<div class="containerIndex">
     <div class="formInd">
             <?php if ($price):?>
 
                 <?php foreach ($price as $item): ?>
 
-                <div class="glases priceGlases">
+                <div class="bgCart">
 
                 <div class="textPrice">
                     <div class="titlePrice"><?= $item->title ?></div>
@@ -32,7 +18,7 @@ use yii\widgets\ActiveForm;
                     <div class="pricePrice"><?=  '₽' . ' ' . $item->price  ?></div>
                     <div class="lastPricePrice lastPrice"><?= '₽' . ' ' . $item->last ?></div>
                     <?php if (!Yii::$app->user->isGuest): ?>
-                        <a href="/job/create-basket?id=<?= $item->id ?>" class="pressed-button BtnBasket">В корзину</a>
+                        <a href="/job/create-basket?id=<?= $item->id ?>" class="forbasket double-border-button">В корзину</a>
                     <?php endif; ?>
                 </div>
 
@@ -40,7 +26,7 @@ use yii\widgets\ActiveForm;
                     <span class="basket">
                         <?php if (!Yii::$app->user->isGuest): ?>
                         <?php else:?>
-                            <a href="/user/login" class="pressed-button BtnBasket">Войдите чтобы купить</a>
+                            <a href="/user/login" class="loginToBuy double-border-button">Войдите чтобы купить</a>
                     </span>
                         <?php endif; ?>
                 </div>
@@ -58,6 +44,20 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 
+<?php if (Yii::$app->user->isGuest): ?>
+<?php else: ?>
+<div class="adminBtn">
+    <a href="/job/create-price" class="sliding-button">Создать карточку</a>
+
+    <?php foreach ($price as $item): ?>
+
+        <a href="/job/delete-price?id=<?= $item->id ?>" class="sliding-button">Удалить карточку <?= $item->title ?></a>
+
+    <?php endforeach; ?>
+
+    <?php endif; ?>
+
+</div>
 
 
 

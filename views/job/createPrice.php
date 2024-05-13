@@ -8,7 +8,6 @@ use yii\widgets\ActiveForm;
 <div class="containerIndex">
     <div class="form">
         <div class="form__wrapper">
-            <div class="glasesLog glCreate">
                 <h1 class="title"><?= $this->title ?></h1>
                 <?php $form = ActiveForm::begin([
                     'class' => 'form',
@@ -24,10 +23,12 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($model, 'description')->textInput() ?>
                 <?= $form->field($model, 'prices')->textInput() ?>
                 <?= $form->field($model, 'last')->textInput() ?>
-                <?= Html::submitButton("Создать", ['class' => 'pressed-button']) ?>
+            <div class="btnPrice">
+                <?= Html::submitButton("Создать", ['class' => 'sliding-button createPrice']) ?>
+            </div>
+
 
                 <?php ActiveForm::end() ?>
-            </div>
         </div>
     </div>
 </div>
