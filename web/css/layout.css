@@ -8,9 +8,9 @@
     display: flex;
 }
 
-.bgAll{
-    height: 100vh;
-    background-image: url("../images/bg.jpg");
+body{
+    background: url("../images/bg.jpg") center center no-repeat;
+
 
 }
 

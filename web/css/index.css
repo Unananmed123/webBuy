@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     width: 1200px;
-    height: 720px;
     margin: 0 auto;
 
 }
@@ -12,7 +11,6 @@
     color: white;
     display: flex;
     justify-content: center;
-   padding-top: 350px;
     font-size: 120px;
     user-select: none;
 }
@@ -24,4 +22,46 @@
     color: white;
     font-family: "Roboto Slab", serif;
     user-select: none;
+}
+.firstImages{
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+.img{
+    border: 4px #fff solid;
+    height: 400px;
+}
+.images{
+    color: #fff;
+    width: 1200px;
+    position: relative;
+}
+.go{
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    top: 50%;
+     margin: -15px;
+}
+.back{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin: -15px;
+
+}
+.backGO{
+    width: 30px;
+    height: 35px;
+    background: #707070;
+    padding: 10px;
+}
+.imgBtn{
+    background: none;
+}
+.imgBtn:hover{
+    background: #2c2c2c;
 }
