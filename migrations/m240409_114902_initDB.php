@@ -15,7 +15,6 @@ class m240409_114902_initDB extends Migration
                 'id' => $this->primaryKey(),
                 'login' => $this->string(50)->notNull(),
                 'password' => $this->string()->notNull(),
-                'avatar' => $this->string()
             ]
         );
 

@@ -24,6 +24,16 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <body>
 <?php $this->beginBody() ?>
 <div class="bgAll">
+    <div class="loader" id="loader">
+        <div class="loadingio-spinner-dual-ring-nq4q5u6dq7r">
+            <div class="ldio-x2uulkbinbj">
+                <div></div>
+                <div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <header class="header">
@@ -31,29 +41,28 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <div class="container">
 
 
-
             <nav>
 
-            <div class="navig">
-                <a href="/" class="orent ltText">Orent</a>
-                <ul class="ulMain">
-                    <li class="href ltText"><a href="/job/about">About Us</a></li>
-                    <li class="href ltText"><a href="/job/price">Price</a></li>
-                    <li class="href ltText"><a href="/job/photo">Photo</a></li>
-                    <li class="href ltText"><a href="/job/news">News</a></li>
-                    <?php if (Yii::$app->user->isGuest): ?>
-                    <li class="href ltText" ><a href="/user/login">Sign in</a></li>
-                </ul>
+                <div class="navig">
+                    <a href="/" class="orent ltText">Orent</a>
+                    <ul class="ulMain">
+                        <li class="href ltText"><a href="/job/about">About Us</a></li>
+                        <li class="href ltText"><a href="/job/price">Price</a></li>
+                        <li class="href ltText"><a href="/job/music">Music</a></li>
+                        <li class="href ltText"><a href="/job/news">News</a></li>
+                        <?php if (Yii::$app->user->isGuest): ?>
+                        <li class="href ltText"><a href="/user/login">Sign in</a></li>
+                    </ul>
 
-            </div>
+                </div>
                 <ul>
                     <?php else: ?>
-                        <li class="href ltText"><a href="/user/profile">Profile</a></li>
+                    <li class="href ltText"><a href="/user/profile">Profile</a></li>
                 </ul>
-                    <?php endif; ?>
+                <?php endif; ?>
 
             </nav>
-            </div>
+        </div>
 
     </header>
 
@@ -65,13 +74,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </main>
 
 
-
-
-<footer>
-    <div class="container fotCont">
-        ©Orent <?= date('Y') ?>
-    </div>
-</footer>
+    <footer>
+        <div class="container fotCont">
+            ©Orent <?= date('Y') ?>
+        </div>
+    </footer>
 
 </div>
 <?php $this->endBody() ?>

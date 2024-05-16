@@ -15,11 +15,16 @@ use yii\widgets\ActiveForm;
                         'template' => "{label}\n{input}\n{error}",
                         'labelOptions' => ['class' => 'label'],
                         'inputOptions' => ['class' => 'input'],
-                        'errorOptions' => ['class' => 'error']
-                    ]
+                        'errorOptions' => ['class' => 'error'],
+                    ],
+                    'options' => ['enctype' => 'multipart/form-data']
+
                 ]); ?>
                 <div>
                     <?= $form->field($model, 'login')->textInput() ?>
+                </div>
+                <div>
+                    <?= $form->field($model, 'file')->fileInput() ?>
                 </div>
                 <div>
                     <?= $form->field($model, 'password')->passwordInput() ?>

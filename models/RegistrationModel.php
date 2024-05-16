@@ -9,6 +9,7 @@ use yii\base\Model;
 class RegistrationModel extends Model
 {
     public $login;
+    public $file;
     public $password;
     public $passwordRepeat;
 
@@ -18,6 +19,7 @@ class RegistrationModel extends Model
             [['login', 'password', 'passwordRepeat'], 'required'],
             ['passwordRepeat', 'compare', 'compareAttribute' => 'password'],
             ['login', 'validateLogin'],
+            [['file'], 'file', 'skipOnEmpty' => false],
         ];
     }
 
@@ -35,9 +37,9 @@ class RegistrationModel extends Model
     {
         return [
             'login' => 'Логин',
-            'mail' => 'Почта',
+            'avatar' => 'Аватар профиля',
             'password' => 'Пароль',
-            'Imade' => 'Фото',
+            'Image' => 'Фото',
             'passwordRepeat' => 'Повторённый пароль',
         ];
     }

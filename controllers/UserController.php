@@ -11,6 +11,7 @@ use app\repository\UsersRepository;
 use Yii;
 use yii\base\Model;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class UserController extends Controller
 {
@@ -24,6 +25,7 @@ class UserController extends Controller
         $model = new UserForm();
         if ($model->load(\Yii::$app->request->post()) && $model->login()){
             return $this->goHome();
+
         }
         return $this->render('login', ['model' => $model]);
     }
@@ -40,12 +42,15 @@ class UserController extends Controller
         $this->view->title = "Регистрация";
         $model = new RegistrationModel();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->file = UploadedFile::getInstance($model, 'file');
             $userId = UsersRepository::createUser(
                 $model->login,
                 $model->password,
             );
             if ($userId) {
                 Yii::$app->user->login(Users::findIdentity($userId));
+                $file = $userId . '.' . $model->file->extension;
+                $model->file->saveAs("upload/$file");
                 return $this->goHome();
             }
         }

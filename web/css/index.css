@@ -29,7 +29,7 @@
     justify-content: center;
 }
 .img{
-    border: 4px #fff solid;
+    border: 4px #646464 solid;
     height: 400px;
 }
 .images{
@@ -37,31 +37,9 @@
     width: 1200px;
     position: relative;
 }
-.go{
-    display: flex;
-    justify-content: flex-start;
-    position: absolute;
-    top: 50%;
-     margin: -15px;
-}
-.back{
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin: -15px;
 
-}
-.backGO{
-    width: 30px;
-    height: 35px;
-    background: #707070;
-    padding: 10px;
-}
-.imgBtn{
-    background: none;
-}
-.imgBtn:hover{
-    background: #2c2c2c;
+.imgInImgIndex{
+    width: 1000px;
+    height: 400px;
+    display: none;
 }

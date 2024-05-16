@@ -29,8 +29,15 @@ class AppAsset extends AssetBundle
        'css/reg.css',
        'css/news.css',
        'css/basket.css',
+       'css/snow.min.css',
+       'css/music.css',
+       'css/load.css',
     ];
     public $js = [
+        'js/index.js',
+        'js/Snow.js',
+        'js/music.js',
+        'js/load.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

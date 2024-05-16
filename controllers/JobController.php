@@ -138,4 +138,9 @@ class JobController extends Controller
         }
         return $this->render('deleteMessage', ['model' => $model]);
     }
+
+    public function actionMusic()
+    {
+        return $this->render('music');
+    }
 }

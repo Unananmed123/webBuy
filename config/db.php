@@ -1,10 +1,16 @@
 <?php
 
 return [
+//    'class' => 'yii\db\Connection',
+//    'dsn' => 'pgsql:host=skr1pmen.ru;dbname=news',
+//    'username' => 'newsall',
+//    'password' => 'news603',
+//    'charset' => 'utf8',
+
     'class' => 'yii\db\Connection',
-    'dsn' => 'pgsql:host=skr1pmen.ru;dbname=news',
-    'username' => 'newsall',
-    'password' => 'news603',
+    'dsn' => 'pgsql:host=localhost;dbname=webbuy',
+    'username' => 'postgres',
+    'password' => '',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
