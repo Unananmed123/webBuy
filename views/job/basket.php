@@ -39,7 +39,7 @@ use app\entity\Price;
                             </div>
 
                         <div class="delBas">
-                            <a href="/job/delete-basket?id=<?= $price->id ?>" class="deleteBasket">Убрать из корзины</a>
+                            <a href="/job/delete-basket?id=<?= $item->id ?>" class="deleteBasket">Убрать из корзины</a>
                         </div>
                             <div class="buyBas">
                                 <a href="/job/buy/buy-basket?id=<?= $price->id?>" class="buyBasket double-border-button">Купить</a>

@@ -47,3 +47,10 @@ footer{
     padding-left: 60px;
 }
 
+.profileImgUrl{
+    width: 75px;
+    height: 75px;
+    border-radius: 60px;
+    border: 2px solid #fff;
+}
+

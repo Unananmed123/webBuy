@@ -32,12 +32,14 @@ class AppAsset extends AssetBundle
        'css/snow.min.css',
        'css/music.css',
        'css/load.css',
+       'css/admin.css',
     ];
     public $js = [
         'js/index.js',
         'js/Snow.js',
         'js/music.js',
         'js/load.js',
+        'js/admin.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

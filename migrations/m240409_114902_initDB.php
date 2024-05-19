@@ -15,8 +15,14 @@ class m240409_114902_initDB extends Migration
                 'id' => $this->primaryKey(),
                 'login' => $this->string(50)->notNull(),
                 'password' => $this->string()->notNull(),
+                'admin' => $this->boolean()->defaultValue(false)->notNull(),
             ]
         );
+        $password = password_hash("owner", PASSWORD_DEFAULT);
+        $this->insert('users', ['login' => 'owner', 'password' => $password, 'admin' => true]);
+        $password = password_hash("admin", PASSWORD_DEFAULT);
+        $this->insert('users', ['login' => 'admin', 'password' => $password, 'admin' => true]);
+
 
         $this->createTable(
             'news',

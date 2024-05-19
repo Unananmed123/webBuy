@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\entity\Users;
+use app\models\ChangeLoginModel;
+use app\models\ChangePasswordModel;
 use app\models\RegistrationModel;
 
 use app\models\UserForm;
@@ -10,20 +12,53 @@ use app\models\UserForm;
 use app\repository\UsersRepository;
 use Yii;
 use yii\base\Model;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 
 class UserController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['profile', 'login', 'registration'],
+                'rules' => [
+                    [
+                        'actions' => ['profile'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['login'],
+                        'allow' => true,
+                        'roles' => ['?']
+                    ],
+                    [
+                        'actions' => ['profile'],
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                    [
+                        'actions' => ['registration'],
+                        'allow' => true,
+                        'roles' => ['?']
+                    ],
+                ]
+            ]
+        ];
+    }
     public function actionLogin()
     {
         $this->view->title = 'Авторизация';
-        if (!\Yii::$app->user->isGuest){
+        if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new UserForm();
-        if ($model->load(\Yii::$app->request->post()) && $model->login()){
+        if ($model->load(\Yii::$app->request->post()) && $model->login()) {
             return $this->goHome();
 
         }
@@ -41,18 +76,23 @@ class UserController extends Controller
     {
         $this->view->title = "Регистрация";
         $model = new RegistrationModel();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post())) {
             $model->file = UploadedFile::getInstance($model, 'file');
-            $userId = UsersRepository::createUser(
-                $model->login,
-                $model->password,
-            );
-            if ($userId) {
-                Yii::$app->user->login(Users::findIdentity($userId));
-                $file = $userId . '.' . $model->file->extension;
-                $model->file->saveAs("upload/$file");
-                return $this->goHome();
+            if ($model->validate()) {
+                $userId = UsersRepository::createUser(
+                    $model->login,
+                    $model->password,
+                );
+                if (!empty($model->file)) {
+                    $file = $userId . '.' . 'png';
+                    $model->file->saveAs('uploads/' . $file);
+                }
+                if ($userId) {
+                    Yii::$app->user->login(Users::findIdentity($userId));
+                    return $this->goHome();
+                }
             }
+
         }
         return $this->render('registration', ['model' => $model]);
     }
@@ -67,11 +107,35 @@ class UserController extends Controller
     public function actionDeleteUser($id)
     {
         $model = UsersRepository::getUserById($id);
-        if (!empty($model)){
+        if (!empty($model)) {
             $model->delete();
             Yii::$app->user->logout();
             $this->redirect('/user/registration');
         }
         return $this->render('deleteUser', ['model' => $model]);
+    }
+
+    public function actionChangeLogin($id)
+    {
+        $model = new ChangeLoginModel();
+        if ($model->load(\Yii::$app->request->post())) {
+            $loginChange = UsersRepository::changeLogin($id, $model->login);
+            if (!empty($loginChange)) {
+                return $this->redirect('/user/profile');
+            }
+        }
+        return $this->render('changeLogin', ['model' => $model]);
+    }
+
+    public function actionChangePassword($id)
+    {
+        $model = new ChangePasswordModel();
+        if ($model->load(Yii::$app->request->post())){
+            $passwordChange = UsersRepository::changePassword($id, $model->password);
+            if (!empty($passwordChange)){
+                return $this->redirect('/user/profile');
+            }
+        }
+        return $this->render('changePassword', ['model' => $model]);
     }
 }

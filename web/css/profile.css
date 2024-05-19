@@ -1,7 +1,58 @@
 .backAcc{
     background: none;
 }
+.containerProfile{
+    width: 1200px;
+    background: #454545;
+    padding: 30px;
+    border-radius: 10px;
+
+}
 .regText{
     display: flex;
     justify-content: center;
+}
+
+.loginText{
+    font-size: 30px;
+}
+
+.loginUser{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+.profile{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.ava{
+    width: min-content;
+    border: 5px solid #fff;
+}
+.avaAva{
+    width: max(500px);
+    height: max(400px);
+}
+
+.infoBlock{
+    width: 500px;
+    position: relative;
+    left: 60%;
+}
+.changeAva{
+    font-size: 46px;
+    color: #fff;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+.infoBlock input{
+    display: none;
+}
+.adminPanel{
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
 }

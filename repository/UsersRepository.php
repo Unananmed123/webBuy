@@ -5,6 +5,7 @@ namespace app\repository;
 
 
 use app\entity\Users;
+use Yii;
 
 class UsersRepository
 {
@@ -26,5 +27,41 @@ class UsersRepository
         $user->save();
         return $user->id;
     }
+
+    public static function getUsers()
+    {
+        return Users::find()->all();
+    }
+
+    public static function createNewAdmin($id)
+    {
+        $user = Users::find()->where(['id' => $id])->one();
+        $user->admin = 1;
+        return $user->update();
+    }
+    public static function deleteAdmin($id)
+    {
+        $user = Users::find()->where(['id' => $id])->one();
+        $user->admin = 0;
+        return $user->update();
+    }
+
+    public static function changeLogin($id, $login)
+    {
+        $user = Users::find()->where(['id' => $id])->one();
+        $user->login = $login;
+        return $user->update();
+    }
+
+    public static function changePassword($id, $password)
+    {
+        $user = Users::find()->where(['id' => $id])->one();
+        $user->validatePassword($password);
+        if ($password != $user->password){
+            $user->password = password_hash($password, PASSWORD_DEFAULT);
+        }
+        return $user->update();
+    }
+
 
 }

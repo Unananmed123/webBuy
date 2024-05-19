@@ -8,7 +8,7 @@
     <a href="/job/message?user_id=<?= Yii::$app->user->id ?>" class="sliding-button">Создать новость</a>
 <?php endif; ?>
 
-
+<?php if (!empty($news)): ?>
     <div class="containerIndex">
         <div class="news">
         <?php foreach ($news as $item): ?>
@@ -32,8 +32,9 @@
 
 
         <?php endforeach; ?>
-
-
+<?php else: ?>
+            <div class="NULL">Пока что нет новостей</div>
+<?php endif; ?>
 
         </div>
     </div>

@@ -7,15 +7,56 @@ use app\entity\Basket;
 use app\entity\Price;
 use app\models\BasketForm;
 use app\models\DelPriceForm;
+use app\models\JobModel;
 use app\models\NewsForm;
 use app\models\PriceForm;
 use app\repository\JobRepository;
 use app\repository\UsersRepository;
 use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class JobController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['basket', 'createPrice' , 'deletePrice', 'createBasket', 'deleteBasket'],
+                'rules' => [
+                    [
+                        'actions' => ['basket'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['createPrice'],
+                        'allow' => true,
+                        'roles' => ['owner' , 'admin'],
+                    ],
+                    [
+                        'actions' => ['createBasket'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['deleteBasket'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['deletePrice'],
+                        'allow' => true,
+                        'roles' => ['owner' , 'admin'],
+                    ],
+                ]
+            ]
+        ];
+    }
+
+
     public function actions()
     {
         return [
@@ -70,10 +111,9 @@ class JobController extends Controller
         $price = JobRepository::getBasketUsId($user_id);
 //        var_dump($price);
         $cart = [];
-        foreach ($price as $item){
+        foreach ($price as $item) {
             $cart[] = JobRepository::getPriceByPriceId($item->price_id);
         }
-
 
 
         return $this->render('basket', ['cart' => $cart, 'price' => $price]);
@@ -98,16 +138,10 @@ class JobController extends Controller
         return $this->render('deleteBasket', ['model' => $model]);
     }
 
-    public function actionAbout()
-    {
-        $this->view->title = 'О нас';
-        return $this->render('about');
-    }
-
     public function actionMessage($user_id)
     {
         $model = new NewsForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             JobRepository::createMessage(
                 $model->user_id = $user_id,
                 $model->message
@@ -121,7 +155,7 @@ class JobController extends Controller
     public function actionNews()
     {
         $news = JobRepository::getNews();
-        foreach ($news as $item){
+        foreach ($news as $item) {
             $user = UsersRepository::getUserById($item->user_id);
         }
 
@@ -142,5 +176,20 @@ class JobController extends Controller
     public function actionMusic()
     {
         return $this->render('music');
+    }
+
+    public function actionChangeImage($id)
+    {
+
+        $model = new JobModel();
+        if ($model->load(Yii::$app->request->post())){
+            $model->file = UploadedFile::getInstance($model, 'file');
+            if (!empty($model->file)) {
+                $file = $id . '.' . 'png';
+                $model->file->saveAs('uploads/' . $file);
+                $this->redirect('/user/profile');
+            }
+        }
+        return $this->render('changeImage', ['model' => $model]);
     }
 }

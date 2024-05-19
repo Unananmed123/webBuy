@@ -52,3 +52,7 @@
     justify-content: center;
 }
 
+.empty{
+    font-size: 72px;
+    font-family: 'Montserrat', sans-serif;
+}

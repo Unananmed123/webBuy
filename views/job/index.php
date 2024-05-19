@@ -42,6 +42,7 @@
 <div class="containerIndex">
     <div class="formIndex">
 
+
         <div class="images">
 
 
@@ -67,7 +68,10 @@
             <span>ORENT</span>
 
         </div>
-        <span class="spanIndex">Больше, лучше, понятнее</span>
+        <div class="canvas">
+            <span class="spanIndex">Больше, лучше, понятнее</span>
+        </div>
+
 
 
     </div>

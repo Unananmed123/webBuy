@@ -22,6 +22,7 @@
     color: white;
     font-family: "Roboto Slab", serif;
     user-select: none;
+    position: relative;
 }
 .firstImages{
     height: 400px;

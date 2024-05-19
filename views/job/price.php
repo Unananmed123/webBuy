@@ -43,18 +43,14 @@ use yii\widgets\ActiveForm;
             <?php endif; ?>
     </div>
 </div>
-
-<?php if (Yii::$app->user->isGuest): ?>
-<?php else: ?>
+<?php if (Yii::$app->user->can('admin') || Yii::$app->user->can('owner')): ?>
 <div class="adminBtn">
     <a href="/job/create-price" class="sliding-button">Создать карточку</a>
-
     <?php foreach ($price as $item): ?>
 
         <a href="/job/delete-price?id=<?= $item->id ?>" class="sliding-button">Удалить карточку <?= $item->title ?></a>
 
     <?php endforeach; ?>
-
     <?php endif; ?>
 
 </div>

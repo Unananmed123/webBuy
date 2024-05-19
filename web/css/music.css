@@ -29,4 +29,7 @@
 audio{
     border: none;
 }
-
+.infoBtn{
+    background: none;
+    top: -30px;
+}

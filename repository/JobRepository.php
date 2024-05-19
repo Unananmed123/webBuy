@@ -5,6 +5,8 @@ namespace app\repository;
 use app\entity\Basket;
 use app\entity\News;
 use app\entity\Price;
+use app\entity\Users;
+use yii\web\UploadedFile;
 
 class JobRepository
 {
@@ -72,4 +74,5 @@ class JobRepository
     {
         return News::find()->where(['id' => $id])->one();
     }
+
 }

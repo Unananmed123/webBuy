@@ -16,25 +16,25 @@ class UserForm extends Model
     public function attributeLabels()
     {
         return [
-          'login' => 'Логин',
-          'password' => "Пароль",
+            'login' => 'Логин',
+            'password' => "Пароль",
         ];
     }
 
     public function rules()
     {
         return [
-          [['login', 'password'], 'required'],
+            [['login', 'password'], 'required'],
             ['password', 'validatePassword'],
         ];
     }
 
     public function validatePassword($attribute, $params)
     {
-        if (!$this->hasErrors()){
+        if (!$this->hasErrors()) {
             $user = $this->getUser();
 
-            if (!$user || !$user->validatePassword($this->password)){
+            if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Ошибка в логине или пароле');
             }
         }
@@ -43,7 +43,7 @@ class UserForm extends Model
 
     public function getUser()
     {
-        if ($this->_user === false){
+        if ($this->_user === false) {
             $this->_user = UsersRepository::getUserByLogin($this->login);
         }
         return $this->_user;
@@ -51,9 +51,11 @@ class UserForm extends Model
 
     public function login()
     {
-        if ($this->validate()){
+        if ($this->validate()) {
             return Yii::$app->user->login($this->getUser());
         }
         return false;
     }
+
+
 }

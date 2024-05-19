@@ -1,7 +1,9 @@
 li{
     list-style: none;
 }
-
+.containerIndex{
+    color: #fff;
+}
 a{
     color: #fff;
     text-decoration: none;

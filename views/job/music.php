@@ -13,7 +13,7 @@
                     <audio controls class="music" loop>
                         <source src="/music/Nicery.mp3" type="audio/mpeg">
                     </audio>
-                    <button class="infoBtn1 infoBtn">Info</button>
+                    <button class="infoBtn1 infoBtn sliding-button">Info</button>
                     <div class="info1 info">неплохой трек, как середина пути, вроде что то есть, но также чего то не
                         хватает
                     </div>
@@ -23,7 +23,7 @@
                     <audio controls class="music" loop>
                         <source src="/music/new jazz 140bpm.mp3" type="audio/mpeg">
                     </audio>
-                    <button class="infoBtn2 infoBtn">Info</button>
+                    <button class="infoBtn2 infoBtn sliding-button">Info</button>
                     <div class="info2 info">Первый трек, созданный мной в стиле "new jazz", а также один из самых
                         качественных треков.
                     </div>
@@ -33,7 +33,7 @@
                     <audio controls class="music" loop>
                         <source src="/music/new jazz 2 140 bpm.mp3" type="audio/mpeg">
                     </audio>
-                    <button class="infoBtn3 infoBtn">Info</button>
+                    <button class="infoBtn3 infoBtn sliding-button">Info</button>
                     <div class="info3 info">Вторая попытка сделать трек в стиле "new jazz"</div>
                 </div>
                 <div class="music4">
@@ -41,7 +41,7 @@
                     <audio controls class="music" loop>
                         <source src="/music/random Music.mp3" type="audio/mpeg">
                     </audio>
-                    <button class="infoBtn4 infoBtn">Info</button>
+                    <button class="infoBtn4 infoBtn sliding-button">Info</button>
                     <div class="info4 info">просто рандомно накиданный звук, на то и random music</div>
                 </div>
 

@@ -1,0 +1,54 @@
+.admins{
+    color: #fff;
+}
+.welcome{
+    display: flex;
+    justify-content: center;
+    font-size: 36px;
+}
+.users{
+    width: 600px;
+    background: #454545;
+    position: static;
+    border-radius: 10px;
+}
+.userInfo{
+    padding: 10px;
+}
+.userInfo:hover{
+    background: #3a3a3a;
+    border-radius: 10px;
+}
+
+.userText{
+    margin: 10px;
+}
+.userIdText{
+    padding: 10px;
+}
+.userNameText{
+    padding: 10px;
+}
+.isAdminText{
+    padding: 10px;
+}
+.userBtns{
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+    /*align-items: center;*/
+}
+.userBtns{
+    display: flex;
+    justify-content: flex-end;
+
+}
+.userName{
+    position: static;
+}
+
+table{
+    table-layout: fixed;
+}
+tr, td{
+    padding: 10px;
+}

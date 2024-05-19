@@ -46,7 +46,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 <div class="navig">
                     <a href="/" class="orent ltText">Orent</a>
                     <ul class="ulMain">
-                        <li class="href ltText"><a href="/job/about">About Us</a></li>
                         <li class="href ltText"><a href="/job/price">Price</a></li>
                         <li class="href ltText"><a href="/job/music">Music</a></li>
                         <li class="href ltText"><a href="/job/news">News</a></li>
@@ -57,7 +56,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 </div>
                 <ul>
                     <?php else: ?>
-                    <li class="href ltText"><a href="/user/profile">Profile</a></li>
+                    <li class="href ltText"><a href="/user/profile">
+                            <img class="profileImgUrl" src="/uploads/<?= Yii::$app->user->id ?>.png" alt=""> </a></li>
                 </ul>
                 <?php endif; ?>
 
