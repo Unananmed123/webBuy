@@ -4,3 +4,11 @@
     flex-direction: column;
     color: white;
 }
+
+.file input{
+    display: none;
+}
+.btnFile{
+    display: flex;
+    justify-content: center;
+}

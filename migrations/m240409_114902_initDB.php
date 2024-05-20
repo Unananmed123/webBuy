@@ -33,7 +33,15 @@ class m240409_114902_initDB extends Migration
                 'date' => $this->timestamp()->defaultExpression("NOW()"),
             ]
         );
+        $this->createTable('messages',
+            [
+                'id' => $this->primaryKey(),
+                'user_id' => $this->integer()->notNull(),
+                'message' => $this->string()->notNull(),
+            ]
 
+
+        );
         $this->createTable(
             'basket',
             [
@@ -42,6 +50,7 @@ class m240409_114902_initDB extends Migration
                 'user_id' => $this->integer()->notNull(),
             ]
         );
+
         $this->createTable('price',[
             'id' => $this->primaryKey(),
             'title' => $this->string()->notNull(),
@@ -50,7 +59,10 @@ class m240409_114902_initDB extends Migration
             'last' => $this->integer()->notNull(),
             'photo' => $this->string(),
         ]);
-
+        $this->addForeignKey('message_to_users_fk',
+            'messages', 'user_id',
+            'users', 'id'
+        );
         $this->addForeignKey('prise_to_basket_fk',
             'basket',
             'price_id',
@@ -85,6 +97,7 @@ class m240409_114902_initDB extends Migration
         $this->dropTable('price');
         $this->dropTable('basket');
         $this->dropTable('users');
+        $this->dropTable('messages');
 
     }
 

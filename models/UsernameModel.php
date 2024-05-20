@@ -2,32 +2,30 @@
 
 namespace app\models;
 
-use app\entity\Users;
 use app\repository\UsersRepository;
 use yii\base\Model;
 
-class ChangePasswordModel extends Model
+class UsernameModel extends Model
 {
-    public $password;
-    public $old_password;
+    public $login;
 
     public function rules()
     {
         return [
-            [['password', 'old_password'], 'required'],
-            ['password', 'validatePassword'],
+            [['login'], 'required'],
+            ['login', 'validateLogin'],
         ];
     }
 
-    public function validatePassword($attribute, $params)
+    public function validateLogin($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            if ($this->password == $this->old_password) {
-                $this->addError($attribute, 'Новый пароль не должаен совпадать со старым');
+            $user = UsersRepository::getUserByLogin($this->login);
+            if ($user) {
+                $this->addError($attribute, 'такое имя пользователя уже занято');
             }
         }
     }
-
 
     public function attributeLabels()
     {
@@ -37,7 +35,6 @@ class ChangePasswordModel extends Model
             'password' => 'Пароль',
             'Image' => 'Фото',
             'passwordRepeat' => 'Повторённый пароль',
-            'old_password' => 'Старый пароль'
         ];
     }
 }

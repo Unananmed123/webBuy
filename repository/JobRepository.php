@@ -3,6 +3,7 @@
 namespace app\repository;
 
 use app\entity\Basket;
+use app\entity\Messages;
 use app\entity\News;
 use app\entity\Price;
 use app\entity\Users;
@@ -75,4 +76,22 @@ class JobRepository
         return News::find()->where(['id' => $id])->one();
     }
 
+    public static function createMessageInChat($id, $message)
+    {
+        $messages = new Messages();
+        $messages->user_id = $id;
+        $messages->message = $message;
+        $messages->save();
+        return $messages->id;
+    }
+
+    public static function getMessages()
+    {
+        return Messages::find()->all();
+    }
+
+    public static function deleteMessage()
+    {
+        return Messages::deleteAll();
+    }
 }

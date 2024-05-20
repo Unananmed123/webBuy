@@ -14,7 +14,6 @@ class ChangeLoginModel extends Model
         return [
             [['login'], 'required'],
             ['login', 'validateLogin'],
-
         ];
     }
 

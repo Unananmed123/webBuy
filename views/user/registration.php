@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
     <div class="form">
         <div class="form__wrapper">
             <div class="glasesReg">
-                <h1><?= $this->title ?></h1>
+<!--                <h1>--><?php //= $this->title ?><!--</h1>-->
                 <?php $form = ActiveForm::begin([
                     'fieldConfig' => [
                         'template' => "{label}\n{input}\n{error}",
@@ -23,9 +23,16 @@ use yii\widgets\ActiveForm;
                 <div>
                     <?= $form->field($model, 'login')->textInput() ?>
                 </div>
-                <div>
-                    <?= $form->field($model, 'file')->fileInput() ?>
+                <div class="file">
+                    <label>
+                        <?= $form->field($model, 'file')->fileInput() ?>
+                        <div class="btnFile double-border-button">Загрузить файл</div>
+                    </label>
+
+
+
                 </div>
+
                 <div>
                     <?= $form->field($model, 'password')->passwordInput() ?>
                 </div>

@@ -7,7 +7,7 @@ use app\models\ChangeLoginModel;
 use app\models\ChangePasswordModel;
 use app\models\RegistrationModel;
 
-use app\models\UserForm;
+use app\models\LoginModel;
 
 use app\repository\UsersRepository;
 use Yii;
@@ -57,7 +57,7 @@ class UserController extends Controller
             return $this->goHome();
         }
 
-        $model = new UserForm();
+        $model = new LoginModel();
         if ($model->load(\Yii::$app->request->post()) && $model->login()) {
             return $this->goHome();
 
@@ -100,7 +100,7 @@ class UserController extends Controller
     public function actionProfile()
     {
         $this->view->title = 'Профиль';
-        $model = new UserForm();
+        $model = new LoginModel();
         return $this->render('profile', ['model' => $model]);
     }
 
@@ -118,7 +118,7 @@ class UserController extends Controller
     public function actionChangeLogin($id)
     {
         $model = new ChangeLoginModel();
-        if ($model->load(\Yii::$app->request->post())) {
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $loginChange = UsersRepository::changeLogin($id, $model->login);
             if (!empty($loginChange)) {
                 return $this->redirect('/user/profile');
@@ -130,7 +130,7 @@ class UserController extends Controller
     public function actionChangePassword($id)
     {
         $model = new ChangePasswordModel();
-        if ($model->load(Yii::$app->request->post())){
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
             $passwordChange = UsersRepository::changePassword($id, $model->password);
             if (!empty($passwordChange)){
                 return $this->redirect('/user/profile');

@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
     <div class="form">
         <div class="form__wrapper">
             <div class="glasesLog">
-                <h1 class="title"><?= $this->title ?></h1>
+<!--                <h1 class="title">--><?php //= $this->title ?><!--</h1>-->
                 <?php $form = ActiveForm::begin([
                     'class' => 'form',
                     'fieldConfig' => [

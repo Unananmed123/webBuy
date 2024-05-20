@@ -33,6 +33,7 @@ class AppAsset extends AssetBundle
        'css/music.css',
        'css/load.css',
        'css/admin.css',
+       'css/chat.css',
     ];
     public $js = [
         'js/index.js',
@@ -40,6 +41,7 @@ class AppAsset extends AssetBundle
         'js/music.js',
         'js/load.js',
         'js/admin.js',
+        'js/fire.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

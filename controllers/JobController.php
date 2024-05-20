@@ -6,6 +6,7 @@ namespace app\controllers;
 use app\entity\Basket;
 use app\entity\Price;
 use app\models\BasketForm;
+use app\models\ChatForm;
 use app\models\DelPriceForm;
 use app\models\JobModel;
 use app\models\NewsForm;
@@ -24,7 +25,7 @@ class JobController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['basket', 'createPrice' , 'deletePrice', 'createBasket', 'deleteBasket'],
+                'only' => ['basket', 'createPrice' , 'deletePrice', 'createBasket', 'deleteBasket', 'DeleteChat'],
                 'rules' => [
                     [
                         'actions' => ['basket'],
@@ -48,6 +49,11 @@ class JobController extends Controller
                     ],
                     [
                         'actions' => ['deletePrice'],
+                        'allow' => true,
+                        'roles' => ['owner' , 'admin'],
+                    ],
+                    [
+                        'actions' => ['deleteChat'],
                         'allow' => true,
                         'roles' => ['owner' , 'admin'],
                     ],
@@ -191,5 +197,25 @@ class JobController extends Controller
             }
         }
         return $this->render('changeImage', ['model' => $model]);
+    }
+
+    public function actionChat($id)
+    {
+        $model = new ChatForm();
+        $messages = JobRepository::getMessages();
+        $users = UsersRepository::getUserbyId($id);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            JobRepository::createMessageInChat($model->user_id = $id, $model->message);
+        }
+        return $this->render('chat', ['model' => $model, 'messages' => $messages, 'users' => $users]);
+    }
+
+    public function actionDeleteChat()
+    {
+        $model = JobRepository::deleteMessage();
+        if (!empty($model)) {
+            $this->redirect("/user/profile");
+        }
+        return $this->render('deleteChat', ['model' => $model]);
     }
 }

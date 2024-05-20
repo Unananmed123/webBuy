@@ -11,3 +11,7 @@
 .textUrlReg{
     color: #006fff;
 }
+.changeBtn{
+    display: flex;
+    justify-content: center;
+}

@@ -25,10 +25,13 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    height: 1000px;
 }
 .ava{
     width: min-content;
     border: 5px solid #fff;
+    top: -250px;
+    position: relative;
 }
 .avaAva{
     width: max(500px);
@@ -55,4 +58,13 @@
     display: flex;
     justify-content: center;
     font-size: 36px;
+}
+.underAva{
+    position: relative;
+    top: -200px;
+}
+.loginUser{
+    position: relative;
+    top: -50px;
+    left: 10px;
 }

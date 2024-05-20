@@ -28,6 +28,9 @@ use yii\widgets\ActiveForm;
                     <a href="/user/change-login?id=<?= Yii::$app->user->id ?>" class="double-border-button data">Сменить имя</a><br>
                     <a href="/user/change-password?id=<?= Yii::$app->user->id ?>" class="double-border-button data">Сменить пароль</a>
                 </div>
+                <div class="messages">
+                    <a href="/job/chat?id=<?= Yii::$app->user->id ?>" class="double-border-button" >Общий чат</a>
+                </div>
             </div>
 
 

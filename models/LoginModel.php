@@ -7,7 +7,7 @@ use app\repository\UsersRepository;
 use Yii;
 use yii\base\Model;
 
-class UserForm extends Model
+class LoginModel extends Model
 {
     public $login;
     public $password;

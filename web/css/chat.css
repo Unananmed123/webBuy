@@ -1,0 +1,43 @@
+
+
+.btnSend {
+    margin-top: 8px;
+    height: 60px;
+    font-size: 20px;
+    width: 60px;
+    background: #939393;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnSend:hover {
+    background: #3b3b3b;
+}
+
+.messageChat{
+    color: #000;
+    background: #fff;
+    width: max-content;
+    padding: 20px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+}
+
+.messageUi input{
+    width: 100%;
+    position: static;
+
+}
+
+.btnChat{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -80px;
+}

@@ -6,14 +6,17 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 ?>
-
-    <div class="back">
-        <div class="btnBack">
-            <button onclick="window.history.back()" class="double-border-button">Назад</button>
-        </div>
+<div class="back">
+    <div class="btnBack">
+        <button onclick="window.history.back()" class="double-border-button">Назад</button>
     </div>
+</div>
+
+
+
 
 <div class="containerIndex">
+
     <?php $form = ActiveForm::begin([
         'fieldConfig' => [
             'template' => "{label}\n{input}\n{error}",
@@ -27,21 +30,15 @@ use yii\widgets\ActiveForm;
 
 
     <div>
-        <?= $form->field($model, 'old_password')->passwordInput() ?>
-    </div>
-    <div>
-        <?= $form->field($model, 'password')->passwordInput() ?>
+        <?= $form->field($model, 'login')->textInput() ?>
     </div>
     <div class="textLogin">
-        <?= Html::submitButton('Сменить пароль', ['class' => 'sliding-button backAcc regBtn']) ?>
+        <?= Html::submitButton('Сменить логин', ['class' => 'sliding-button backAcc changeBtn']) ?>
     </div>
 
 
     <?php ActiveForm::end(); ?>
 </div>
-
-
-
 
 
 

@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\ChangeLoginForm;
+use app\models\UsernameModel;
 use app\repository\RoleRepository;
 use app\repository\UsersRepository;
 use Yii;
@@ -64,5 +66,15 @@ class AdminController extends Controller
 
         }
         return $this->render('deleteAdmin', ['model' => $model]);
+    }
+
+    public function actionUsername($id)
+    {
+        $model = new UsernameModel();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $user = UsersRepository::changeLogin($id, $model->login);
+            $this->redirect('/admin/admin');
+        }
+        return $this->render('username', ['model' => $model, 'user' => $user]);
     }
 }

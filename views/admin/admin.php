@@ -39,7 +39,7 @@
 
                         <div class="userBtns">
                             <div class="change">
-                                <a href="/admin/change-user">✏️</a>
+                                <a href="/admin/username?id=<?= $item->id ?>">✏️</a>
                             </div>
                             <div class="getAdmin">
                                 <a href="/admin/new-admin?id=<?= $item->id ?>">➕</a>
